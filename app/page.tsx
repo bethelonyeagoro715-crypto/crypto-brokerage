@@ -6,7 +6,7 @@ import { useTheme } from "next-themes";
 import { motion } from "framer-motion";
 import { Bell, ArrowDownToLine, ArrowUpFromLine, ArrowRightLeft, MoreHorizontal, Eye, EyeOff, Sun, Moon } from "lucide-react";
 import { mockCryptos, chartData } from "@/lib/mockData";
-import { AreaChart, Area, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
+import { AreaChart, Area, Tooltip, ResponsiveContainer } from 'recharts';
 
 export default function Home() {
   const [showBalance, setShowBalance] = useState(true);
@@ -22,7 +22,8 @@ export default function Home() {
 
   const itemVariants = {
     hidden: { opacity: 0, y: 20 },
-    show: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 300, damping: 24 } }
+    // THE FIX IS HERE: "spring" as const
+    show: { opacity: 1, y: 0, transition: { type: "spring" as const, stiffness: 300, damping: 24 } }
   };
 
   return (
