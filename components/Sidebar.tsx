@@ -2,12 +2,13 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Home, LineChart, ArrowRightLeft, Wallet, User, LogOut } from "lucide-react";
+import { Home, LineChart, ArrowRightLeft, Wallet, User, LogOut, Users } from "lucide-react";
 
 const navItems = [
   { name: "Dashboard", href: "/", icon: Home },
   { name: "Markets", href: "/markets", icon: LineChart },
   { name: "Trade", href: "/trade", icon: ArrowRightLeft },
+  { name: "Copy Trading", href: "/copy-trading", icon: Users },
   { name: "Wallet", href: "/wallet", icon: Wallet },
   { name: "Profile", href: "/profile", icon: User },
 ];
@@ -16,7 +17,7 @@ export default function Sidebar() {
   const pathname = usePathname();
 
   return (
-    <aside className="hidden md:flex flex-col w-64 h-full bg-white/5 backdrop-blur-2xl border-r border-white/10 sticky top-0 z-50">
+    <aside className="hidden md:flex flex-col w-64 h-full bg-[#0a0a0a]/40 backdrop-blur-3xl border-r border-white/10 sticky top-0 z-50">
       <div className="p-6 flex items-center gap-3">
         <div className="w-8 h-8 bg-cyan-500/20 border border-cyan-400/50 rounded-lg flex items-center justify-center text-cyan-400 font-bold text-xl shadow-[0_0_15px_rgba(34,211,238,0.4)]">
           ₿
@@ -26,7 +27,8 @@ export default function Sidebar() {
 
       <nav className="flex-1 px-4 space-y-2 mt-4">
         {navItems.map((item) => {
-          const isActive = pathname === item.href;
+          // Checks if the path matches exactly OR if it's a sub-route (like /copy-trading/trader-1)
+          const isActive = pathname === item.href || (item.href !== "/" && pathname.startsWith(item.href));
           const Icon = item.icon;
           
           return (
@@ -46,8 +48,8 @@ export default function Sidebar() {
         })}
       </nav>
 
-      <div className="p-4 border-t border-white/10">
-        <button className="flex items-center gap-3 px-4 py-3 w-full text-red-400 font-medium rounded-xl hover:bg-red-500/10 hover:border-red-500/20 border border-transparent transition-all">
+      <div className="p-4 border-t border-white/5">
+        <button className="flex items-center gap-3 px-4 py-3 w-full text-red-400/80 font-medium rounded-xl hover:bg-red-500/10 hover:border-red-500/20 border border-transparent transition-all">
           <LogOut size={20} />
           <span>Log Out</span>
         </button>
