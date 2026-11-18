@@ -14,3 +14,41 @@ export const chartData = [
   { time: "20:00", price: 67320 },
   { time: "23:59", price: 67100 },
 ];
+
+// ... existing mockCryptos and chartData ...
+
+export const leadTraders = [
+  {
+    id: "trader-1",
+    name: "CryptoWhale",
+    avatar: "CW",
+    roi: 342.5,
+    winRate: 78,
+    risk: "High",
+    followers: 12450,
+    aum: "12.4M",
+    chart: [{ v: 10 }, { v: 25 }, { v: 20 }, { v: 45 }, { v: 80 }, { v: 75 }, { v: 120 }],
+  },
+  {
+    id: "trader-2",
+    name: "AlphaSeeker",
+    avatar: "AS",
+    roi: 156.2,
+    winRate: 82,
+    risk: "Medium",
+    followers: 8300,
+    aum: "8.1M",
+    chart: [{ v: 10 }, { v: 15 }, { v: 25 }, { v: 22 }, { v: 40 }, { v: 45 }, { v: 60 }],
+  },
+  {
+    id: "trader-3",
+    name: "ZenTrader",
+    avatar: "ZT",
+    roi: 89.4,
+    winRate: 91,
+    risk: "Low",
+    followers: 3400,
+    aum: "4.5M",
+    chart: [{ v: 10 }, { v: 12 }, { v: 15 }, { v: 18 }, { v: 20 }, { v: 25 }, { v: 30 }],
+  },
+];
