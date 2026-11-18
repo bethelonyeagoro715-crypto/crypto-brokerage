@@ -1,12 +1,13 @@
 "use client";
 
-import { useState } from "react";
+import { useState, Suspense } from "react"; // 👈 IMPORT SUSPENSE
 import { useParams, useRouter } from "next/navigation";
-import { ArrowLeft, Shield, Info } from "lucide-react";
+import { ArrowLeft, Info } from "lucide-react";
 import { leadTraders } from "@/lib/mockData";
 import { AreaChart, Area, Tooltip, ResponsiveContainer } from 'recharts';
 
-export default function TraderProfile() {
+// Rename the original component to this
+function TraderProfileContent() {
   const params = useParams();
   const router = useRouter();
   const trader = leadTraders.find((t) => t.id === params.id) || leadTraders[0];
@@ -79,5 +80,14 @@ export default function TraderProfile() {
         </div>
       </div>
     </div>
+  );
+}
+
+// 👈 NEW DEFAULT EXPORT WITH SUSPENSE
+export default function TraderProfile() {
+  return (
+    <Suspense fallback={<div className="p-8 text-center text-gray-500 mt-20">Loading trader data...</div>}>
+      <TraderProfileContent />
+    </Suspense>
   );
 }
