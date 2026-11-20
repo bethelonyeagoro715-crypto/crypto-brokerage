@@ -48,11 +48,11 @@ export default function Sidebar() {
         })}
       </nav>
 
-      <div className="p-4 border-t border-white/5">
-        <button className="flex items-center gap-3 px-4 py-3 w-full text-red-400/80 font-medium rounded-xl hover:bg-red-500/10 hover:border-red-500/20 border border-transparent transition-all">
+           <div className="p-4 border-t border-white/5">
+        <Link href="/login" className="flex items-center gap-3 px-4 py-3 w-full text-red-400/80 font-medium rounded-xl hover:bg-red-500/10 hover:border-red-500/20 border border-transparent transition-all">
           <LogOut size={20} />
           <span>Log Out</span>
-        </button>
+        </Link>
       </div>
     </aside>
   );
