@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { useTheme } from "next-themes";
 import { motion } from "framer-motion";
-import { Bell, ArrowDownToLine, ArrowUpFromLine, ArrowRightLeft, MoreHorizontal, Eye, EyeOff, Sun, Moon, Sparkles } from "lucide-react";
+import { Bell, ArrowDownToLine, ArrowUpFromLine, ArrowRightLeft, MoreHorizontal, Eye, EyeOff, Sun, Moon, Sparkles, ShieldCheck } from "lucide-react";
 import { mockCryptos, chartData } from "@/lib/mockData";
 import { AreaChart, Area, Tooltip, ResponsiveContainer } from 'recharts';
 import OnboardingModal from "@/components/OnboardingModal";
@@ -66,6 +66,43 @@ export default function Home() {
             <div className="w-10 h-10 rounded-full bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center text-white font-medium shadow-lg shadow-cyan-500/20 cursor-pointer hover:scale-105 transition-transform">
               A
             </div>
+          </div>
+        </motion.div>
+                {/* ACTION BANNERS */}
+        <motion.div variants={itemVariants} className="space-y-3 mb-6">
+          {/* Complete Profile Banner */}
+          <div className="bg-[#111]/60 backdrop-blur-xl border border-white/10 rounded-2xl p-4 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+            <div className="flex items-center gap-4">
+              <div className="w-10 h-10 rounded-full bg-cyan-500/10 flex items-center justify-center text-cyan-400">
+                <Sparkles size={20} />
+              </div>
+              <div>
+                <h4 className="text-white font-semibold">Complete Your Profile</h4>
+                <p className="text-gray-400 text-xs">Personalize your investment experience to get the most out of the platform.</p>
+              </div>
+            </div>
+            <button 
+              onClick={() => setIsOnboardingOpen(true)}
+              className="whitespace-nowrap px-4 py-2 bg-cyan-500 hover:bg-cyan-400 text-black text-sm font-bold rounded-xl shadow-[0_0_15px_rgba(34,211,238,0.3)] transition-all"
+            >
+              Complete Setup
+            </button>
+          </div>
+
+          {/* KYC Banner */}
+          <div className="bg-[#111]/60 backdrop-blur-xl border border-white/10 rounded-2xl p-4 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+            <div className="flex items-center gap-4">
+              <div className="w-10 h-10 rounded-full bg-purple-500/10 flex items-center justify-center text-purple-400">
+                <ShieldCheck size={20} />
+              </div>
+              <div>
+                <h4 className="text-white font-semibold">Verify Your Identity</h4>
+                <p className="text-gray-400 text-xs">Complete your identity verification to unlock full platform access.</p>
+              </div>
+            </div>
+            <button className="whitespace-nowrap px-4 py-2 bg-purple-600 hover:bg-purple-500 text-white text-sm font-bold rounded-xl shadow-[0_0_15px_rgba(168,85,247,0.3)] transition-all">
+              Start Verification
+            </button>
           </div>
         </motion.div>
 
